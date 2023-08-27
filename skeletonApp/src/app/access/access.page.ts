@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-access',
@@ -7,35 +6,30 @@ import { ActionSheetController } from '@ionic/angular';
   styleUrls: ['access.page.scss']
 })
 export class AccessPage {
-  
-  constructor(private actionSheetController: ActionSheetController) {}
 
-  async presentActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Comandos',
-      buttons: [{
-        text: 'Opción 1',
-        handler: () => {
-          console.log('Opción 1 clicked');
-        }
-      }, {
-        text: 'Opción 2',
-        handler: () => {
-          console.log('Opción 2 clicked');
-        }
-      }]
-    });
-    await actionSheet.present();
+  displayForm: boolean = false;
+  client = {
+    firstName: '',
+    lastName: '',
+    birthDate: null
+  };
+
+  constructor() {}
+
+  showClientForm() {
+    this.displayForm = !this.displayForm;
   }
 
-  // Función para manejar el evento click del botón "templates"
-  handleTemplates() {
-    console.log('Botón templates presionado');
+  saveClient() {
+    // Aquí puedes implementar la lógica para guardar el cliente.
+    console.log(this.client);
+    this.client = {
+      firstName: '',
+      lastName: '',
+      birthDate: null
+    };
+    this.displayForm = false;
   }
 
-  // Función para manejar el evento click del botón "agendamiento"
-  handleAgendamiento() {
-    console.log('Botón agendamiento presionado');
-  }
-
+  // Otros métodos y lógica pueden seguir aquí...
 }

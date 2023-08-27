@@ -7,6 +7,14 @@ import { ActionSheetController } from '@ionic/angular';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
+  
+  // Propiedades para el formulario de cliente
+  displayForm = false;
+  client = {
+    firstName: '',
+    lastName: '',
+    birthDate: ''
+  };
 
   constructor(private actionSheetController: ActionSheetController) {}
 
@@ -16,17 +24,29 @@ export class HomePage {
       buttons: [{
         text: 'GV55',
         handler: () => {
-          console.log('Opción 1 clicked');
+          console.log('GV55 clicked');
         }
       }, {
         text: 'GV75',
         handler: () => {
-          console.log('Opción 2 clicked');
+          console.log('GV75 clicked');
         }
       }]
     });
     await actionSheet.present();
   }
-  
+
+  // Método para mostrar el formulario de cliente
+  showClientForm() {
+    this.displayForm = true;
+  }
+
+  // Método para guardar temporalmente el cliente ingresado y ocultar el formulario
+  saveClient() {
+    console.log('Cliente guardado temporalmente:', this.client);
+    this.displayForm = false;
+    this.client = { firstName: '', lastName: '', birthDate: '' }; // Reset del formulario
+  }
+
   // Otros métodos y lógica pueden seguir aquí...
 }

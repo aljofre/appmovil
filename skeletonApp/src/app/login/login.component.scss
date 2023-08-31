@@ -5,7 +5,7 @@ ion-content {
 
 /* Estilo para las letras/títulos */
 ion-title, ion-label, ion-button {
-  color: #ff0000; // Color rojo para letras
+  color: #a9a9a9; // Color rojo para letras
 }
 
 /* Estilo para botones con un estilo principal */
@@ -18,5 +18,9 @@ ion-button.primary {
   }
 }
 
-/* Si usas otros componentes de Ionic como listas, tarjetas, etc. puedes continuar agregando o ajustando los estilos aquí. */
-
+ion-header {
+  ion-toolbar {
+    --background: $primary-color;
+    --color: $background-color;
+  }
+}

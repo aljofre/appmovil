@@ -5,40 +5,39 @@
 </ion-header>
 
 <ion-content>
-
   <div class="ion-text-center">
-    <h1>Bienvenido!</h1>
-    <p>USUARIO: {{user.usuario}} </p>
+    <h1>Bienvenido {{ user.usuario }}</h1>
     <ion-title>Información Adicional</ion-title>
   </div>
 
-  <ion-list>
-    <ion-item [@slideRight]="animateInput">
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="client.firstName"></ion-input>
-    </ion-item>
+  <!-- Segment Control -->
+  <ion-segment [(ngModel)]="segmentValue">
+    <ion-segment-button value="experiencia">
+      Experiencia Laboral
+    </ion-segment-button>
+    <ion-segment-button value="certificaciones">
+      Certificaciones
+    </ion-segment-button>
+    <ion-segment-button value="misDatos">
+      Mis Datos
+    </ion-segment-button>
+  </ion-segment>
 
-    <ion-item [@slideRight]="animateInput">
-      <ion-label position="floating">Apellido</ion-label>
-      <ion-input type="text" [(ngModel)]="client.lastName"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>Fecha de Nacimiento:</ion-label>
-      <mat-form-field appearance="fill">
-        <mat-label>Fecha de Nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="client.birthDate">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </ion-item>
+  <!-- Contenido de los Segmentos -->
+  <div *ngIf="segmentValue == 'experiencia'">
+    <app-experiencia-laboral></app-experiencia-laboral>
+  </div>
+  <div *ngIf="segmentValue == 'certificaciones'">
+    <app-certificaciones></app-certificaciones>
+  </div>
+  <div *ngIf="segmentValue == 'misDatos'">
+    <app-mis-datos></app-mis-datos>
+  </div>
 
-    <div class="ion-padding">
-      <ion-button (click)="guardar()">Guardar</ion-button>
-      <ion-button (click)="limpiarInputs()">Limpiar</ion-button>
-      <ion-button (click)="mostrarInformacion()">Mostrar</ion-button>
-    </div>
-  </ion-list>
+  <div class="ion-text-center ion-padding-top">
+    <ion-button (click)="guardar()">Guardar</ion-button>
+    <ion-button (click)="mostrarInformacion()">Mostrar Información</ion-button>
+  </div>
 </ion-content>
 
 <ion-footer>

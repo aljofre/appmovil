@@ -98,11 +98,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 
     autenticar() {
       if (this.validateInputs()) {
-          
           localStorage.setItem('loggedInUser', JSON.stringify(this.user));
           this.router.navigate(['/home']);
       }
-  }
+    }
     
     constructor(private router: Router) {}
 }

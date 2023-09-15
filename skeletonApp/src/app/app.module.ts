@@ -25,6 +25,12 @@ import { LoginComponent } from './login/login.component';
 import { HomePage } from './home/home.page';
 import { AccessPage } from './access/access.page';
 
+// Importaciones de los nuevos componentes
+import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-laboral.component';
+import { CertificacionesComponent } from './certificaciones/certificaciones.component';
+import { MisDatosComponent } from './mis-datos/mis-datos.component';
+import { N404Component } from './n404/n404.component'; // Importación del componente N404
+
 // Importaciones para formularios y peticiones HTTP
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -34,7 +40,11 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LoginComponent,
     HomePage,
-    AccessPage
+    AccessPage,
+    ExperienciaLaboralComponent,
+    CertificacionesComponent,
+    MisDatosComponent,
+    N404Component // Añadido a las declaraciones
   ],
   imports: [
     BrowserModule, 
@@ -43,16 +53,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    // Módulos de Angular Material
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    // Proveedor necesario para MatDatepicker
-    MatNativeDateModule
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

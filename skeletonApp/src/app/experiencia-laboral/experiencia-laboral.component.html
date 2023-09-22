@@ -1,25 +1,3 @@
-<ion-list>
-  <ion-item>
-    <ion-label position="floating">Empresa</ion-label>
-    <ion-input type="text" [(ngModel)]="experience.empresa"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Año inicio</ion-label>
-    <ion-input type="number" [(ngModel)]="experience.anoInicio"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Actualmente trabajando aquí</ion-label>
-    <ion-checkbox [(ngModel)]="experience.trabajando"></ion-checkbox>
-  </ion-item>
-  <ion-item *ngIf="!experience.trabajando">
-    <ion-label position="floating">Año término</ion-label>
-    <ion-input type="number" [(ngModel)]="experience.anoTermino"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Cargo</ion-label>
-    <ion-input type="text" [(ngModel)]="experience.cargo"></ion-input>
-  </ion-item>
-
-  <!-- Botón para mostrar la información en la consola -->
-  <ion-button (click)="mostrarExperiencia()">Mostrar Experiencia</ion-button>
-</ion-list>
+<p>
+  experiencia-laboral works!
+</p>

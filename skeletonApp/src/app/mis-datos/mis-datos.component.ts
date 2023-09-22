@@ -1,48 +1,59 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mis-datos',
   templateUrl: './mis-datos.component.html',
-  styleUrls: ['./mis-datos.component.scss']
+  styleUrls: ['./mis-datos.component.scss'],
 })
 export class MisDatosComponent implements OnInit {
 
-  // Datos de usuario y cliente
-  user = {
-    usuario: 'NombreUsuario'
+
+  ngOnInit() {}
+  usuario:String;
+  niveles:any[]=[
+    {id:1,nivel:"Basica Incompleta"},
+    {id:2,nivel:"Basica Completa"},
+    {id:3,nivel:"Media Incompleta"},
+    {id:4,nivel:"Media Completa"},
+    {id:5,nivel:"Media Incompleta"},
+    {id:6,nivel:"Superior Completa"}
+  ]
+  data:any={
+    nombre:"",
+    apellido:"",
+    education:"",
+    nacimiento:""
   };
+  constructor(public alertController: AlertController) {
 
-  client = {
-    firstName: '',
-    lastName: '',
-    birthDate: null
-  };
-
-  // Variables para animaciones (si tienes alguna)
-  animateInput = 'state1';
-
-  // Inicialización de segmentValue
-  segmentValue: string = 'experiencia'; // Por defecto, puede ajustarse según lo necesario
-
-  constructor() { }
-
-  ngOnInit() {
-    // Lógica específica al iniciar el componente si es necesaria
+  }
+  /**
+   * Metodo limpíar recorre un objeto y se define el 
+   * valor de su propiedad en ""
+   */
+  limpiar(){
+    for (var [key, value] of Object.entries(this.data)) {
+      Object.defineProperty(this.data,key,{value:""})
+    }
   }
 
-  guardar() {
-    console.log('Datos guardados:', this.client);
+  mostrar(){
+    // IF
+    (this.data.nombre!="" && this.data.apellido!="") &&
+    // THEN 
+    this.presentAlert("Usuario","Su nombre es "+this.data.nombre+" "+this.data.apellido) ||
+    // ELSE 
+    this.presentAlert("Usuario","No ingreso nada");
   }
 
-  limpiarInputs() {
-    this.client = {
-      firstName: '',
-      lastName: '',
-      birthDate: null
-    };
-  }
+  async presentAlert(titulo:string,message:string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: message,
+      buttons: ['OK']
+    });
 
-  mostrarInformacion() {
-    console.log('Información del cliente:', this.client);
+    await alert.present();
   }
 }

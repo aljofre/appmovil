@@ -1,24 +1,35 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGardService } from './services/auth-gard.service';
 
-// Tus componentes importados
-import { LoginComponent } from './login/login.component';
-import { HomePage } from './home/home.page';
-import { AccessPage } from './access/access.page';
-import { N404Component } from './n404/n404.component'; // Asegúrate de importar el componente 404
-
+// Se definen las rutas a nivel de APP
 const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomePage },
-    { path: 'access', component: AccessPage },
-    // ... (otras rutas que puedas tener)
-    { path: '404', component: N404Component },
-    { path: '**', redirectTo: '/404' }
+  {
+    // See: HomePageModule
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGardService]
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    // En caso de cualquier error en la ruta se redirecciona al Not Found
+    path: '**',
+    loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

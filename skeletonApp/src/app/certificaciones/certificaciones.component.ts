@@ -1,21 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-certificaciones',
   templateUrl: './certificaciones.component.html',
   styleUrls: ['./certificaciones.component.scss'],
 })
-export class CertificacionesComponent {
-  
-  certification = {
-    nombre: '',
-    fechaObtencion: null,
-    tieneVencimiento: false,
-    fechaVencimiento: null
-  };
+export class CertificacionesComponent implements OnInit {
 
-  mostrarCertificacion(): void {
-    // Esto solo imprime la certificación en la consola para fines de verificación.
-    console.log('Certificación:', this.certification);
-  }
+  constructor() { }
+
+  ngOnInit() {}
+
 }

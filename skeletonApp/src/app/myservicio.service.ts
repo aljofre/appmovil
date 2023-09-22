@@ -10,11 +10,8 @@ export class MyservicioService {
 
   constructor(private http: HttpClient) { }
 
-  // Ejemplo de método para obtener datos de una API
   fetchData() {
     return this.http.get(this.apiUrl);
   }
 
-  // Puedes agregar más métodos y lógica según lo necesites
-  // ...
 }

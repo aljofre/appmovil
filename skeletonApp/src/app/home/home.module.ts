@@ -1,24 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { HomePageRoutingModule } from './home-routing.module';
+import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+
+import { HomePageRoutingModule } from './home-routing.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,  // Asegúrate de que esto está importado y declarado aquí
+    FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatFormFieldModule
+    // See: HomePageRoutingModule
+    HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  entryComponents:[]
 })
 export class HomePageModule {}

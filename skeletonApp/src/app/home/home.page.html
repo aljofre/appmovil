@@ -1,50 +1,35 @@
-<ion-header>
+<!-- Se mueve todo de la actividad anterior a MisDatos -->
+<!-- Comienza el Header -->
+<ion-header [translucent]="false">
   <ion-toolbar>
-    <ion-title>SkeletonAPP</ion-title>
+    <ion-title>
+      SkeletonAPP
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="logout()" color="danger" fill="outline">
+        Salir
+        <ion-icon slot="end" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment value="perfil" (ionChange)="segmentChanged($event)">
+      <ion-segment-button  value="perfil">
+        <ion-icon name="home"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="experiencias">
+        <ion-icon name="briefcase-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="certificaciones">
+        <ion-icon name="school-outline"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
+<!-- Termina el Header -->
 
 <ion-content>
-  <div class="ion-text-center">
-    <h1>Bienvenido {{ user.usuario }}</h1>
-    <ion-title>Información Adicional</ion-title>
-  </div>
-
-  <!-- Segment Control -->
-  <ion-segment [(ngModel)]="segmentValue">
-    <ion-segment-button value="experiencia">
-      Experiencia Laboral
-    </ion-segment-button>
-    <ion-segment-button value="certificaciones">
-      Certificaciones
-    </ion-segment-button>
-    <ion-segment-button value="misDatos">
-      Mis Datos
-    </ion-segment-button>
-  </ion-segment>
-
-  <!-- Contenido de los Segmentos -->
-  <div *ngIf="segmentValue == 'experiencia'">
-    <app-experiencia-laboral></app-experiencia-laboral>
-  </div>
-  <div *ngIf="segmentValue == 'certificaciones'">
-    <app-certificaciones></app-certificaciones>
-  </div>
-  <div *ngIf="segmentValue == 'misDatos'">
-    <app-mis-datos></app-mis-datos>
-  </div>
-
-  <div class="ion-text-center ion-padding-top">
-    <ion-button (click)="guardar()">Guardar</ion-button>
-    <ion-button (click)="mostrarInformacion()">Mostrar Información</ion-button>
-  </div>
+  <!-- Aquí se desplegara todos los Component que se declararon como children en
+  HomePageModule -->
+  <ion-router-outlet></ion-router-outlet>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <div class="ion-text-center">
-      <p>&copy; 2023 ARIETIS. Todos los derechos reservados.</p>
-      <a href="/">Inicio</a> | 
-    </div>
-  </ion-toolbar>
-</ion-footer>
